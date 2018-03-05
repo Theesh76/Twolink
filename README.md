@@ -12,3 +12,6 @@ twolink_inv = It is a simulink file.  The simulink file has a robot with a imper
 Procedure : 
 1. Run twolink_ftraj - Obtain base paremeters (base)
 2. Run twolink_valid 
+
+
+Note : Incase reg.c not working. Try compiling the mex file using the command "mex reg.c" in the command line before running twolink_ftraj
