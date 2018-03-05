@@ -44,16 +44,6 @@ for i=1 : length(t)
     b11(i) = (x(2)/(omega))*sin(omega*t(i)) + (x(6)/(omega*2))*sin(omega*2*t(i)) + (x(10)/(omega*3))*sin(omega*3*t(i)) - (x(4)/(omega))*cos(omega*t(i)) - (x(8)/(omega*2))*cos(omega*2*t(i)) - (x(12)/(omega*3))*cos(omega*3*t(i)); 
 end
 q = [a11;b11]';
-%for i=1 : length(t)
- %   a1(i) = (x(1))*cos(omega*t(i)) + (x(5))*cos(omega*2*t(i)) + (x(9))*cos(omega*3*t(i)) + (x(3))*sin(omega*t(i)) + (x(7))*sin(omega*2*t(i)) + (x(11))*sin(omega*3*t(i)); 
-  %  b1(i)=  (x(2))*cos(omega*t(i)) + (x(6))*cos(omega*2*t(i)) + (x(10))*cos(omega*3*t(i)) + (x(4))*sin(omega*t(i)) + (x(8))*sin(omega*2*t(i)) + (x(12))*sin(omega*3*t(i)); 
-%end
-%qd = [a1;b1]';
-%for i=1 : length(t)
- %   a11(i) = omega*((x(3))*cos(omega*t(i)) + (x(7))*cos(omega*2*t(i)) + (x(11))*cos(omega*3*t(i)) - (x(1))*sin(omega*t(i)) - (x(5))*sin(omega*2*t(i)) - (x(9))*sin(omega*3*t(i))); 
- %   b11(i)=  omega*((x(4))*cos(omega*t(i)) + (x(8))*cos(omega*2*t(i)) + (x(12))*cos(omega*3*t(i)) - (x(2))*sin(omega*t(i)) - (x(6))*sin(omega*2*t(i)) - (x(10))*sin(omega*3*t(i))); 
-%end
-%qdd = [a11;b11]';
 a11_d = dfdx(a11,t);
 b11_d = dfdx(b11,t);
 qd = [a11_d;b11_d]';
@@ -69,14 +59,6 @@ sim('twolink_inv');
 q_m = [qm.Data(:,1) qm.Data(:,2)];
 qd_m = [qd_m.Data(:,1) qd_m.Data(:,2)];
 qdd_m = [qdd_m.Data(:,1) qdd_m.Data(:,2)];
-%u1 = [u.Data(:,1),u.Data(:,2)];
-%u = vec2mat(u1,1);
-% a_dd = dfdx(q_m(:,1),t);
-% b_dd = dfdx(q_m(:,2),t);
-% qd_m = [a_dd,b_dd];
-% a_ddd = dfdx(qd_m(:,1),t);
-% b_ddd = dfdx(qd_m(:,2),t);
-% qdd_m = [a_ddd,b_ddd];
 W = cell(length(t),1); 
 for i= 1 : length(t)
      Wl = vec2mat(Reg(q_m(i,:),qd_m(i,:),qdd_m(i,:)),20);
@@ -85,7 +67,6 @@ for i= 1 : length(t)
      Wb3 = Wl(:,18);
      Wb4 = Wl(:,16);
      Wb = [Wb1,Wb2,Wb3,Wb4];
-     %Wb = Regressor(q_m(i,:),qd_m(i,:),qdd_m(i,:),1,1);
      W{i} = Wb;
 end
 W = cell2mat(W);

@@ -1,7 +1,6 @@
 function [c,ceq] = twolinkconf(x)
 vel_max = [1 1];
 acc_max = [0.5 0.5];
-%qr = [0.5236 0.5236];
 qr = [1.5708 1.5708];
 omega = 2*pi*0.1;
 % Nonlinear Inequality Constraints
