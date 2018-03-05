@@ -55,7 +55,7 @@ qd_des = timeseries(qd,t);
 qdd_des = timeseries(qdd,t);
 plot(qdes);
 legend('joint1','joint2');
-sim('twolink_inv');
+sim('twolink_inv_base');
 q_m = [qm.Data(:,1) qm.Data(:,2)];
 qd_m = [qd_m.Data(:,1) qd_m.Data(:,2)];
 qdd_m = [qdd_m.Data(:,1) qdd_m.Data(:,2)];
